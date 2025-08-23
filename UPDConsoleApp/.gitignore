@@ -1,0 +1,32 @@
+﻿# Build results
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.lock.json
+
+# Logs
+*.log
+
+# Others
+[Tt]humbs.db
+[Dd]esktop.ini
