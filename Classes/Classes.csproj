@@ -39,15 +39,15 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Errors.cs" />
-        <Compile Include="MetricsParser.cs" />
-        <Compile Include="MetricsValidator.cs" />
-        <Compile Include="NullChecker.cs" />
+        <Compile Include="Errors.cs"/>
+        <Compile Include="MetricsParser.cs"/>
+        <Compile Include="MetricsValidator.cs"/>
+        <Compile Include="NullChecker.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
-        <Compile Include="MetricsUDPServer.cs" />
+        <Compile Include="MetricsUDPServer.cs"/>
     </ItemGroup>
     <ItemGroup>
-      <Content Include=".gitignore" />
+        <Content Include=".gitignore"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
