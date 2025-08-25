@@ -11,7 +11,9 @@ namespace UPDConsoleApp
 
         public static void Main(string[] args)
         {
-            var server = new MetricsUdpServer(Port, DisplayMessage, DisplayMetrics);
+            var metricsParser = new MetricsParser(DisplayMessage);
+            var metricsValidator = new MetricsValidator(DisplayMessage);
+            var server = new MetricsUdpServer(Port, metricsParser, metricsValidator, DisplayMessage, DisplayMetrics);
             ConsoleKeyInfo keyInfo;
 
             server.Start();

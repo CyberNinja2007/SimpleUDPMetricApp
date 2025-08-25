@@ -7,18 +7,8 @@ using System.Threading;
 
 namespace Classes
 {
-    public class MetricsUdpServer
+    public class MetricsUdpServer : IMetricsServer
     {
-        /// <summary>
-        ///     Делегат для обработки ошибок.
-        /// </summary>
-        public delegate void ErrorHandler(string error);
-
-        /// <summary>
-        ///     Делегат для обновления метрик.
-        /// </summary>
-        public delegate void UpdatedMetricsHandler(Dictionary<string, double> metrics);
-
         /// <summary>
         ///     Максимальное кол-во буффера приема
         /// </summary>
@@ -29,9 +19,9 @@ namespace Classes
         /// </summary>
         private readonly Dictionary<string, double> _metrics;
 
-        private readonly MetricsParser _metricsParser;
+        private readonly IMetricsParser _metricsParser;
 
-        private readonly MetricsValidator _metricsValidator;
+        private readonly IMetricsValidator _metricsValidator;
 
         private readonly Thread _reader;
         private readonly int _readerTimeout = 5 * 1000;
@@ -46,11 +36,15 @@ namespace Classes
         ///     Создаёт новый экземпляр UDP сервера.
         /// </summary>
         /// <param name="port">Порт, на котором слушает сервер.</param>
+        /// <param name="metricsParser">Парсер метрик.</param>
+        /// <param name="metricsValidator">Валидатор метрик.</param>
         /// <param name="onError">Коллбэк для обработки ошибок.</param>
         /// <param name="updatedMetricsHandler">Коллбэк при обновлении метрик.</param>
         /// <param name="endPoint">Необязательный конечный адрес для приёма данных.</param>
         public MetricsUdpServer(
             int port,
+            IMetricsParser metricsParser,
+            IMetricsValidator metricsValidator,
             ErrorHandler onError,
             UpdatedMetricsHandler updatedMetricsHandler,
             IPEndPoint endPoint = null)
@@ -63,8 +57,8 @@ namespace Classes
             _endPoint = endPoint;
             OnError += onError;
             OnUpdate += updatedMetricsHandler;
-            _metricsValidator = new MetricsValidator(msg => OnError?.Invoke(msg));
-            _metricsParser = new MetricsParser(msg => OnError?.Invoke(msg));
+            _metricsValidator = metricsValidator; 
+            _metricsParser = metricsParser; 
         }
 
         /// <summary>

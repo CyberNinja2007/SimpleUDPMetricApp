@@ -3,14 +3,8 @@ using System.Text;
 
 namespace Classes
 {
-    public class MetricsValidator
+    public class MetricsValidator  : IMetricsValidator
     {
-        /// <summary>
-        ///     Делегат для обработки ошибок валидации метрик.
-        /// </summary>
-        /// <param name="error">Сообщение об ошибке.</param>
-        public delegate void ErrorHandler(string error);
-
         /// <summary>
         ///     Создаёт новый экземпляр валидатора метрик.
         /// </summary>

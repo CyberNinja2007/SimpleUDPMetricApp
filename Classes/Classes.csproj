@@ -40,6 +40,9 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Errors.cs"/>
+        <Compile Include="Interfaces\IMetricsParser.cs" />
+        <Compile Include="Interfaces\IMetricsServer.cs" />
+        <Compile Include="Interfaces\IMetricsValidator.cs" />
         <Compile Include="MetricsParser.cs"/>
         <Compile Include="MetricsValidator.cs"/>
         <Compile Include="NullChecker.cs"/>

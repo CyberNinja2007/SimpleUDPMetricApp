@@ -3,14 +3,8 @@ using System.Text;
 
 namespace Classes
 {
-    public class MetricsParser
+    public class MetricsParser  : IMetricsParser
     {
-        /// <summary>
-        ///     Делегат для обработки ошибок валидации метрик.
-        /// </summary>
-        /// <param name="error">Сообщение об ошибке.</param>
-        public delegate void ErrorHandler(string error);
-
         /// <summary>
         ///     Создаёт новый экземпляр парсера метрик.
         /// </summary>
